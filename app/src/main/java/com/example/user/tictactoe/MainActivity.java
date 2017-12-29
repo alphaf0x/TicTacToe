@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -18,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     //button OnClick method
     public void BuClick(View view) {
         Button buSelected= (Button) view;
-        buSelected.setBackgroundColor(Color.RED);
 
         int CellID=0;
         //assign an individual ID to each button
@@ -61,10 +62,25 @@ public class MainActivity extends AppCompatActivity {
         }
         PlayGame(CellID,buSelected);
     }
-    
-    void PlayGame(int CellID,Button button){
+
+    int AcitvePlayer=1; //1- first player, 2- second player
+    ArrayList<Integer> Player1= new ArrayList<Integer>(); //holds player 1 data
+    ArrayList<Integer> Player2= new ArrayList<Integer>(); //holds player 2 data
+    void PlayGame(int CellID,Button buSelected){
         //debug log calls
         Log.d("Player:",String.valueOf(CellID));
-        Log.d("Button Text:",button.getText().toString());
+        //end debug
+
+        if(AcitvePlayer==1){
+            buSelected.setText("X");
+            buSelected.setBackgroundColor(Color.RED);
+            Player1.add(CellID);
+            AcitvePlayer=2;
+        }else{
+            buSelected.setText("O");
+            buSelected.setBackgroundColor(Color.BLUE);
+            Player2.add(CellID);
+            AcitvePlayer=1;
+        }
     }
 }
