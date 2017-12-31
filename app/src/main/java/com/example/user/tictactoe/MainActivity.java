@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
             buSelected.setBackgroundColor(Color.RED);
             Player1.add(CellID);
             AcitvePlayer=2;
+
+            AutoPlay();
         }else{
             buSelected.setText("O");
             buSelected.setBackgroundColor(Color.BLUE);
@@ -156,5 +159,64 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Player 2 won!", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    void AutoPlay(){
+        ArrayList<Integer> EmptyCells= new ArrayList<Integer>();//List of all unselected cells
+
+        //find empty cells
+        for(int cellID=0; cellID<10; cellID++){
+            if(!(Player1.contains(cellID) || Player2.contains(cellID))){
+                EmptyCells.add(cellID);
+            }
+        }
+
+        Random r= new Random();
+        int RandIndex= r.nextInt(EmptyCells.size()); //if size is = 3 then select (0,1,2)
+        int CellID=EmptyCells.get(RandIndex);
+
+        Button buSelected;
+        //determine which cell ID corresponds to which button ID
+        switch(CellID){
+            case 1:
+                buSelected= (Button) findViewById(R.id.bu1);
+                break;
+
+            case 2:
+                buSelected= (Button) findViewById(R.id.bu2);
+                break;
+
+            case 3:
+                buSelected= (Button) findViewById(R.id.bu3);
+                break;
+
+            case 4:
+                buSelected= (Button) findViewById(R.id.bu4);
+                break;
+
+            case 5:
+                buSelected= (Button) findViewById(R.id.bu5);
+                break;
+
+            case 6:
+                buSelected= (Button) findViewById(R.id.bu6);
+                break;
+
+            case 7:
+                buSelected= (Button) findViewById(R.id.bu7);
+                break;
+
+            case 8:
+                buSelected= (Button) findViewById(R.id.bu8);
+                break;
+
+            case 9:
+                buSelected= (Button) findViewById(R.id.bu9);
+                break;
+            default:
+                buSelected= (Button) findViewById(R.id.bu1);
+                break;
+        }
+        PlayGame(CellID,buSelected);
     }
 }
