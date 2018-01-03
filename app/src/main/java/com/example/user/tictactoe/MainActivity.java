@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     //button OnClick method
     public void BuClick(View view) {
         Button buSelected= (Button) view;
-        TextView showWinner = (TextView) view;
 
         int CellID=0;
         //assign an individual ID to each button
@@ -82,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
             buSelected.setBackgroundColor(Color.RED);
             Player1.add(CellID);
             AcitvePlayer=2;
-
             AutoPlay();
         }else{
             buSelected.setText("O");
@@ -96,8 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
     void CheckWinner(){
         int winner=0;
-        TextView showWinner;
-        showWinner = findViewById(R.id.winner_is);
+        TextView showWinner =  findViewById(R.id.winner_is);
         //the size of the board is pre-determined 3x3
         //this algorithm can be improved
         //col1
@@ -171,7 +168,6 @@ public class MainActivity extends AppCompatActivity {
 
     void AutoPlay(){
         ArrayList<Integer> EmptyCells= new ArrayList<Integer>();//List of all unselected cells
-
         //find empty cells
         for(int cellID=0; cellID<10; cellID++){
             if(!(Player1.contains(cellID) || Player2.contains(cellID))){
