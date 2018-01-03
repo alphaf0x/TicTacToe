@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import static com.example.user.tictactoe.R.id.winner_is;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     //button OnClick method
     public void BuClick(View view) {
         Button buSelected= (Button) view;
+        TextView showWinner = (TextView) view;
 
         int CellID=0;
         //assign an individual ID to each button
@@ -92,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
 
     void CheckWinner(){
         int winner=0;
-
+        TextView showWinner;
+        showWinner = findViewById(R.id.winner_is);
         //the size of the board is pre-determined 3x3
         //this algorithm can be improved
         //col1
@@ -153,10 +158,13 @@ public class MainActivity extends AppCompatActivity {
 
         if(winner!=0){
             if(winner==1){
-                Toast.makeText(this, "Player 1 won!", Toast.LENGTH_LONG).show();
+                showWinner.setText("Player 1 won!");
+                showWinner.setTextColor(Color.RED);
             }
             if(winner==2){
-                Toast.makeText(this, "Player 2 won!", Toast.LENGTH_LONG).show();
+                showWinner.setText("Player 1 won!");
+                showWinner.setTextColor(Color.BLUE);
+                //Toast.makeText(this, "Player 2 won!", Toast.LENGTH_LONG).show();
             }
         }
     }
