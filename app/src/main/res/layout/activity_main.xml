@@ -7,6 +7,16 @@
     android:layout_height="match_parent"
     tools:context="com.example.user.tictactoe.MainActivity">
 
+    <TextView
+        android:id="@+id/winner_is"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="32sp"
+        android:layout_width="match_parent"
+        android:layout_height="30pt"
+        android:layout_marginLeft="40pt"
+        android:layout_marginRight="40pt"/>
+
     <TableRow
         android:gravity="center"
         android:layout_width="match_parent"
@@ -93,4 +103,12 @@
             android:onClick="BuClick"
             android:text="" />
     </TableRow>
+
+    <Button
+        android:id="@+id/restartBu"
+        android:text="@string/restart_game"
+        android:layout_width="80pt"
+        android:layout_height="30pt"
+        android:layout_marginLeft="40pt"
+        android:layout_marginRight="40pt"/>
 </TableLayout>
